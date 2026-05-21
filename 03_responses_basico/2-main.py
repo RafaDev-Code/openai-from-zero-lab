@@ -12,3 +12,17 @@ Verificacion:
 """
 
 # Escribi tu solucion aca.
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+model = os.getenv("OPENAI_MODEL", "gpt-5-mini")
+client = OpenAI()
+
+response = client.responses.create(
+    model=model,
+    input="Explica que es stock en lenguaje simple"
+)
+
+print(response.output_text)
